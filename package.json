@@ -1,0 +1,29 @@
+{
+    "name": "@borane/discloud",
+    "version": "1.0.0",
+
+    "description": "Discloud est une librairie permettant d'utiliser discord comme un cloud.",
+    "author": "borane",
+    "license": "MIT",
+
+    "homepage": "https://github.com/8borane8/discloud",
+    "bugs": "https://github.com/8borane8/discloud/issues",
+    "repository": {
+      	"type": "git",
+      	"url": "https://github.com/8borane8/discloud.git"
+    },
+    "keywords": [
+		"discloud",
+		"discord", "cloud",
+		"mass", "storage"
+    ],
+
+    "engines" : {
+        "node" : ">=17.0.0"
+    },
+
+    "main": "./src/Discloud.js",
+    "dependencies": {
+        "@borane/expressapi": "^3.0.0"
+    }
+}
