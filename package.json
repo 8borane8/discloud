@@ -1,6 +1,6 @@
 {
     "name": "@borane/discloud",
-    "version": "1.0.0",
+    "version": "1.0.1",
 
     "description": "Discoin est une bibliothèque NodeJS qui permet d'utiliser discord comme un cloud gratuit et illimité.",
     "author": "borane",

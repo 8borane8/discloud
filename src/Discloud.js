@@ -17,6 +17,9 @@ module.exports = class Discloud{
     }
 
     async postFile(content, chunkSize = 25165824){
+        if(!content instanceof String)
+            throw new Error("Content must be a string.");
+
         const parts = new Array();
 
         for(let i = 0; i < content.length; i += chunkSize) {
@@ -53,6 +56,9 @@ module.exports = class Discloud{
     }
 
     async getFile(file){
+        if(!file instanceof File)
+            throw new Error("First argument must be a File.");
+
         const chunks = new Array();
         const promises = new Array();
 
@@ -72,6 +78,9 @@ module.exports = class Discloud{
     }
 
     getFileSync(file){
+        if(!file instanceof File)
+            throw new Error("First argument must be a File.");
+        
         const eventEmitter = new EventEmitter();
 
         setImmediate(async () => {

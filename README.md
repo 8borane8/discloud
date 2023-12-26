@@ -43,9 +43,7 @@ const file = new discloud.File({
     chunks: [
         "https://cdn.discordapp.com/attachments/*****/***/chunk",
         "https://cdn.discordapp.com/attachments/*****/***/chunk"
-    ],
-    checksum: "*****",
-    chunkSize: 25165824
+    ]
 });
 
 const stream = dc.getFileSync(file);
