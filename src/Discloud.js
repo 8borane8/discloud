@@ -48,11 +48,11 @@ module.exports = class Discloud{
         }
         chunks.push(...await Promise.all(promises));
 
-        return new File({
-            chunks: chunks.map(c => c.attachments[0].url.split("?ex")[0]),
-            checksum: expressapi.sha256(content),
-            chunkSize: chunkSize
-        });
+        return new File(
+            chunks.map(c => c.attachments[0].url.split("?ex")[0]),
+            expressapi.sha256(content),
+            chunkSize
+        );
     }
 
     async getFile(file){
@@ -80,7 +80,7 @@ module.exports = class Discloud{
     getFileSync(file){
         if(!file instanceof File)
             throw new Error("First argument must be a File.");
-        
+
         const eventEmitter = new EventEmitter();
 
         setImmediate(async () => {

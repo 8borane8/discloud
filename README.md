@@ -39,12 +39,10 @@ const dc = discloud.Discloud([
     "https://discord.com/api/webhooks/*****/***"
 ]);
 
-const file = new discloud.File({
-    chunks: [
-        "https://cdn.discordapp.com/attachments/*****/***/chunk",
-        "https://cdn.discordapp.com/attachments/*****/***/chunk"
-    ]
-});
+const file = new discloud.File([
+    "https://cdn.discordapp.com/attachments/*****/***/chunk",
+    "https://cdn.discordapp.com/attachments/*****/***/chunk"
+]);
 
 const stream = dc.getFileSync(file);
 
