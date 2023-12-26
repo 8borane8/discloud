@@ -63,3 +63,5 @@ const dc = discloud.Discloud([
     console.log(await dc.getFile());
 })();
 ```
+
+**Vous aimez Discloud ? Ajoutez une star à notre répertoire :star::arrow_up:.**
