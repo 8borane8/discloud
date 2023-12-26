@@ -1,4 +1,5 @@
 const expressapi = require("@borane/expressapi");
+const { EventEmitter } = require("events");
 
 const File = require("./models/File.js");
 
@@ -6,6 +7,12 @@ module.exports = class Discloud{
     #webhooks;
 
     constructor(webhooks){
+        if(!webhooks instanceof Array)
+            throw new Error("Webhooks must be an array.");
+
+        if(webhooks.length == 0)
+            throw new Error("Webhooks must have at least one element.");
+
         this.#webhooks = webhooks;
     }
 
@@ -27,7 +34,7 @@ module.exports = class Discloud{
                     headers: {
                         "Content-Type": "multipart/form-data; boundary=boundary"
                     },
-                    body: `--boundary\r\nContent-Disposition: form-data; name="files[0]"; filename="part"\r\n\r\n${part}\r\n--boundary--`
+                    body: `--boundary\r\nContent-Disposition: form-data; name="files[0]"; filename="chunk"\r\n\r\n${part}\r\n--boundary--`
                 })
             );
 
@@ -62,5 +69,23 @@ module.exports = class Discloud{
         chunks.push(...await Promise.all(promises));
 
         return chunks.join("");
+    }
+
+    getFileSync(file){
+        const eventEmitter = new EventEmitter();
+
+        setImmediate(async () => {
+            for(let url of file.chunks){
+                await new Promise(resolve => {
+                    const stream = expressapi.RequestHelper.requestSync({ url: url })
+                    stream.on("data", chunk => eventEmitter.emit("data", chunk));
+                    stream.once("end", () => resolve());
+                });
+            }
+
+            eventEmitter.emit("end");
+        });
+
+        return eventEmitter;
     }
 };

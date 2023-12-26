@@ -11,13 +11,13 @@ module.exports = class File{
 
     get chunks(){
         return this.#chunks;
-    }
+    };
 
     get checksum(){
         return this.#checksum;
-    }
+    };
 
     get chunkSize(){
         return this.#chunkSize;
-    }
-}
+    };
+};

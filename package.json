@@ -2,7 +2,7 @@
     "name": "@borane/discloud",
     "version": "1.0.0",
 
-    "description": "Discloud est une librairie permettant d'utiliser discord comme un cloud.",
+    "description": "Discoin est une bibliothèque NodeJS qui permet d'utiliser discord comme un cloud gratuit et illimité.",
     "author": "borane",
     "license": "MIT",
 
@@ -22,7 +22,7 @@
         "node" : ">=17.0.0"
     },
 
-    "main": "./src/Discloud.js",
+    "main": "./src/index.js",
     "dependencies": {
         "@borane/expressapi": "^3.0.0"
     }
